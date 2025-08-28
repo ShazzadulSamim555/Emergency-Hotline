@@ -1,5 +1,5 @@
-console.log('common');
-function innertext(text){
+function innertextt(text){
     const Text=document.getElementById(text).innerText;
-    return Text;
+    return (Text);
 }
+

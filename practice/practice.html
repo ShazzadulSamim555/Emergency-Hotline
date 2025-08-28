@@ -5,9 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emergency Helplines</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* ছোট animation এর জন্য */
+    .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    .fade-out {
+      animation: fadeOut 0.4s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-10px); }
+    }
+  </style>
 </head>
 <body class="bg-green-50">
 
+  <!-- Cards -->
   <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     
     <!-- Example Card -->
@@ -20,14 +38,8 @@
         </div>
         <button class="text-gray-400 hover:text-red-500">♡</button>
       </div>
-
-      <!-- Number -->
       <p class="text-2xl font-bold phone-number">999</p>
-
-      <!-- Tag -->
       <span class="px-3 py-1 text-xs bg-gray-100 rounded-full w-fit">All</span>
-
-      <!-- Buttons -->
       <div class="flex gap-2">
         <button class="copy-btn flex-1 border rounded-lg py-2 text-sm">📋 Copy</button>
         <button class="call-btn flex-1 bg-green-500 text-white rounded-lg py-2 text-sm hover:bg-green-600">📞 Call</button>
@@ -52,8 +64,6 @@
       </div>
     </div>
 
-    <!-- তুমি চাইলে এখানে আরও Cards যোগ করতে পারো -->
-
   </div>
 
   <!-- Call History -->
@@ -67,6 +77,9 @@
     </div>
   </div>
 
+  <!-- 🔔 Custom Call Alert -->
+  <div id="callAlert" class="fixed top-5 right-5 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hidden"></div>
+
   <script>
     // Copy button functionality
     document.querySelectorAll(".copy-btn").forEach(btn => {
@@ -77,14 +90,30 @@
       });
     });
 
-    // Call button functionality
     const historyList = document.getElementById("callHistory");
+    const callAlert = document.getElementById("callAlert");
+
+    // Call button functionality
     document.querySelectorAll(".call-btn").forEach(btn => {
       btn.addEventListener("click", function () {
         const card = this.closest(".flex-col");
         const name = card.querySelector("h2").innerText;
         const number = card.querySelector(".phone-number").innerText;
         const time = new Date().toLocaleTimeString();
+
+        // 🔔 Show custom animated alert
+        callAlert.innerText = `📞 Calling ${name} (${number})...`;
+        callAlert.classList.remove("hidden", "fade-out");
+        callAlert.classList.add("fade-in");
+
+        // Hide after 2.5s
+        setTimeout(() => {
+          callAlert.classList.remove("fade-in");
+          callAlert.classList.add("fade-out");
+          setTimeout(() => {
+            callAlert.classList.add("hidden");
+          }, 400);
+        }, 2500);
 
         // Add to history
         const li = document.createElement("li");
