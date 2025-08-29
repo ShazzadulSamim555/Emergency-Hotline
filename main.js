@@ -16,7 +16,7 @@ for (let i = 0; i < icons.length; i++) {
 const btnCall = document.getElementsByClassName("btn-call");
 for (let i = 0; i < btnCall.length; i++) {
   btnCall[i].addEventListener("click", function (event) {
-    console.log(event);
+    //console.log(event);
     // const phoneNum= document.querySelector('.phoneNum').innerText;
     // const card = event.target.closest(".flex.flex-col");
 
@@ -32,7 +32,7 @@ for (let i = 0; i < btnCall.length; i++) {
 
     //Time
     const time = new Date().toLocaleTimeString();
-    console.log(time);
+    //console.log(time);
 
     console.log(phoneNum, "hhhh");
     const innerCoin = innertextt("coin-count");
@@ -59,6 +59,24 @@ for (let i = 0; i < btnCall.length; i++) {
   });
 }
 
+const btnCopy=document.getElementsByClassName("btn-copy");
+for(let i=0; i<btnCopy.length; i++){
+  btnCopy[i].addEventListener("click", function(event){
+    const card=event.target.parentElement;
+    const parent= card.parentElement;
+    const phoneNum=parent.querySelector('.phoneNum').innerText;
+   
+    navigator.clipboard.writeText(phoneNum);
+    alert(`Copied Number: ${phoneNum}`);
+
+    const copyCount= parseInt(innertextt('copy-count'));
+    let newCopy= copyCount+1;
+    document.getElementById('copy-count').innerText=newCopy;
+
+  })
+}
+
+
 const clearBtn=document.getElementById('clear-btn').addEventListener('click', function (event){
-   document.getElementById('history-container').innerText="";
+   document.getElementById('history-container').innerHTML="";
 })
