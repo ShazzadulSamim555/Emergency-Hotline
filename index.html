@@ -29,8 +29,8 @@
                 <button
                     class="px-2 text-xs md:text-base md:px-4 py-2 rounded-2xl bg-blue-50 flex gap-2 items-center font-bold"><span id="heart-count"63>0</span><img
                         class="w-5 h-fit" src="assets/heart.png" alt=""></button>
-                <button id="coin-count"
-                    class="px-2 text-xs md:text-base md:px-4 py-2 rounded-2xl bg-blue-50 flex gap-2 items-center font-bold"><span>100</span><img
+                <button
+                    class="px-2 text-xs md:text-base md:px-4 py-2 rounded-2xl bg-blue-50 flex gap-2 items-center font-bold"><span id="coin-count">100</span><img
                         class="w-5 h-fit" src="assets/coin.png" alt=""></button>
                 <button id="copy-count"
                     class="px-2 text-xs md:text-base md:px-4 py-2 rounded-2xl bg-green-800 text-white flex gap-2 items-center"><span>0</span>copy</button>
@@ -212,7 +212,7 @@
                 <!-- Brac -->
                 <div class="bg-white p-7 rounded-xl flex flex-col gap-4 shadow-[0px_0px_26px_5px_rgba(0,_0,_0,_0.1)]">
                     <div class="flex justify-between items-center">
-                        <img class="w-8" src="assets/emergency.png" alt="">
+                        <img class="w-8" src="assets/brac.png" alt="">
                         <img class="heart-icon w-5 h-fit" src="https://img.icons8.com/?size=48&id=86721&format=png" alt="">
                     </div>
                     <div class="space-y-2">
@@ -261,16 +261,16 @@
                 <div class="flex justify-between items-center">
                     <h2 class="font-bold text-xl flex gap-1 items-center"><i
                             class="fa-solid fa-clock-rotate-left"></i>Call History</h2>
-                    <button class="bg-green-800 text-white px-3 py-y rounded-xl">Clear</button>
+                    <button id="clear-btn" class="bg-green-800 text-white px-3 py-y rounded-xl">Clear</button>
                 </div>
-                <div class="flex flex-col gap-2">
-                    <div class="bg-blue-50 p-3 md:p-5 rounded-xl flex justify-between items-center">
+                <div id="history-container" class=" flex flex-col gap-2">
+                    <!-- <div class="bg-blue-50 p-3 md:p-5 rounded-xl flex justify-between items-center">
                         <div>
-                            <h3 class="font-bold text-sm md:text-base">fire-service Number</h3>
-                            <p class="text-gray-700 text-sm md:text-base">999</p>
+                            <h3 class="font-bold text-sm md:text-base">${title}</h3>
+                            <p class="text-gray-700 text-sm md:text-base">${phoneNum}</p>
                         </div>
-                        <p class="text-xs md:text-sm text-gray-700">12:12:12 am</p>
-                    </div>
+                        <p class="text-xs md:text-sm text-gray-700">${time}</p>
+                    </div> -->
                 </div>
             </div>
 
